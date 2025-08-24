@@ -1,11 +1,13 @@
-import React from 'react'
+"use client";
+import React from 'react';
+import Link from 'next/link';
 import {
   SignInButton,
   SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
-} from '@clerk/nextjs'
+} from '@clerk/nextjs';
 
 const Navbar = () => {
   return (
@@ -14,28 +16,28 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-2 sm:gap-8 w-full">
           {/* Navigation Links */}
           <div className="hidden sm:flex items-center gap-6">
-            <a href="#home" className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200">
+            <Link href="/" className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200">
               Home
-            </a>
-            <a href="#about" className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200">
+            </Link>
+            <Link href="/about" className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200">
               About
-            </a>
-            <a href="/analyze" className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200">
+            </Link>
+            <Link href="/analyze" className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200">
               Analyze
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Navigation Links */}
           <div className="flex sm:hidden items-center gap-3">
-            <a href="#home" className="text-white/90 hover:text-white text-xs font-medium transition-colors duration-200">
+            <Link href="/" className="text-white/90 hover:text-white text-xs font-medium transition-colors duration-200">
               Home
-            </a>
-            <a href="#about" className="text-white/90 hover:text-white text-xs font-medium transition-colors duration-200">
+            </Link>
+            <Link href="/about" className="text-white/90 hover:text-white text-xs font-medium transition-colors duration-200">
               About
-            </a>
-            <a href="/analyze" className="text-white/90 hover:text-white text-xs font-medium transition-colors duration-200">
+            </Link>
+            <Link href="/analyze" className="text-white/90 hover:text-white text-xs font-medium transition-colors duration-200">
               Analyze
-            </a>
+            </Link>
           </div>
 
           {/* Auth section */}
@@ -52,7 +54,7 @@ const Navbar = () => {
                 </button>
               </SignUpButton>
             </SignedOut>
-            
+
             <SignedIn>
               <UserButton />
             </SignedIn>
@@ -60,10 +62,9 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Simple background for demo */}
-      <div className="fixed inset-0 -z-20 bg-slate-900"></div>
+     
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
