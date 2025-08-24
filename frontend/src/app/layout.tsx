@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Background from "@/component/Background";
 import {
   ClerkProvider
 
@@ -31,6 +32,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Background />
         <Navbar/>
           {children}
         </body>

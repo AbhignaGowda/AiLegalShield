@@ -6,7 +6,7 @@ const Hero = () => {
     <>
     
       {/* Your Original Background */}
-      <div className="absolute inset-0 z-[-10]">
+      {/* <div className="absolute inset-0 z-[-10]">
         <Beams
           beamWidth={2}
           beamHeight={15}
@@ -17,7 +17,7 @@ const Hero = () => {
           scale={0.2}
           rotation={0}
         />
-      </div>
+      </div> */}
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center">

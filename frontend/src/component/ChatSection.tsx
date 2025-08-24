@@ -14,9 +14,9 @@ interface Props {
 const ChatSection: React.FC<Props> = ({
   chatMessages, chatInput, chatLoading, onInputChange, onSend, onKeyPress
 }) => (
-  <div className="bg-white rounded-lg shadow-md p-6 mt-6">
+  <div className=" rounded-lg shadow-md p-6 mt-6">
     <h2 className="text-xl font-bold mb-4">Ask Questions About Your Contract</h2>
-    <div className="border rounded-lg p-4 mb-4 max-h-96 overflow-y-auto bg-gray-50">
+    <div className="border rounded-lg p-4 mb-4 max-h-96 overflow-y-auto ">
       {chatMessages.length === 0 ? (
         <p className="text-gray-500 text-center">Ask me anything about your contract!</p>
       ) : (

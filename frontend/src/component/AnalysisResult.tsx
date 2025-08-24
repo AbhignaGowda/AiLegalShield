@@ -8,7 +8,7 @@ interface Props {
 }
 
 const AnalysisResultView: React.FC<Props> = ({ analysisResult }) => (
-  <div className="bg-white rounded-lg shadow-md p-6">
+  <div className="rounded-lg shadow-md p-6">
     <h2 className="text-xl font-bold mb-4">Contract Analysis Results</h2>
 
     {/* Overall Risk Score */}
@@ -23,7 +23,7 @@ const AnalysisResultView: React.FC<Props> = ({ analysisResult }) => (
     </div>
 
     {/* Summary */}
-    <p className="text-gray-700 mb-6">{analysisResult.summary}</p>
+    <p className="text-white mb-6">{analysisResult.summary}</p>
 
     {/* Risky Clauses */}
     {analysisResult.risky_clauses?.length > 0 && (
