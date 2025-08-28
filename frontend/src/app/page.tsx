@@ -1,4 +1,5 @@
 
+import ChatHistory from '@/component/ChatHistory'
 import Hero from '@/component/Hero'
 import React from 'react'
 
@@ -7,6 +8,7 @@ const page = () => {
     <div>
       {/* <Navbar/> */}
       <Hero/>
+      {/* <ChatHistory/> */}
     </div>
   )
 }
