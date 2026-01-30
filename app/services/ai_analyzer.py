@@ -1,4 +1,5 @@
 """AI-powered contract analysis"""
+
 from groq import Groq
 import json
 import os
@@ -12,18 +13,25 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-MODEL_NAME = os.getenv("LLM_MODEL", "llama-3.3-70b-versatile")
+MODEL_NAME = os.getenv("LLM_MODEL")
 
 
 def chat_with_lawyer(docs: list, query: str) -> dict:
     safe_query = sanitize_user_input(query, max_length=1000)
-    context_text = "\n---\n".join(str(doc) for doc in docs) if docs else "No contract context available."
-    
+    context_text = (
+        "\n---\n".join(str(doc) for doc in docs)
+        if docs
+        else "No contract context available."
+    )
+
     messages = [
         {"role": "system", "content": LAWYER_CHAT_PROMPT},
-        {"role": "user", "content": f"CONTRACT CONTEXT:\n---\n{context_text}\n---\n\nQUESTION: {safe_query}"}
+        {
+            "role": "user",
+            "content": f"CONTRACT CONTEXT:\n---\n{context_text}\n---\n\nQUESTION: {safe_query}",
+        },
     ]
-    
+
     try:
         res = client.chat.completions.create(
             model=MODEL_NAME,
@@ -43,7 +51,7 @@ def analyze_risk(docs: str, query: str) -> dict:
         {"role": "system", "content": LEGAL_SYSTEM_PROMPT},
         {"role": "user", "content": prompt},
     ]
-    
+
     try:
         res = client.chat.completions.create(
             model=MODEL_NAME,
@@ -55,7 +63,12 @@ def analyze_risk(docs: str, query: str) -> dict:
         return json.loads(res.choices[0].message.content)
     except json.JSONDecodeError as e:
         logger.error(f"JSON parse error: {e}")
-        return {"error": "Failed to parse analysis", "summary": "", "risks": [], "overall_score": 0}
+        return {
+            "error": "Failed to parse analysis",
+            "summary": "",
+            "risks": [],
+            "overall_score": 0,
+        }
     except Exception as e:
         logger.error(f"Groq API error: {type(e).__name__}: {e}")
         raise
