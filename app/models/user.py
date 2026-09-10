@@ -1,3 +1,4 @@
+"""User model for authentication."""
 from sqlalchemy import Column, Integer, String
 from app.core.database import Base
 
